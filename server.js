@@ -1,11 +1,14 @@
 import express from 'express'
+import stations from './data/stations.js';
+import bodyParser from 'body-parser';
+const port = 3000;
 
 const app = express();
 
-const port = 1025;
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.send('Hi');
+    res.json(stations);
 })
 
 app.listen(port, () => {

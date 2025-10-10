@@ -254,4 +254,6 @@ const stations = [
         radioStation: "https://radiostationusa.fm/online/rock967online"
     },
 
-]
+];
+
+export default stations;
