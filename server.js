@@ -1,26 +1,20 @@
 //Importing 
 import express from 'express';
-import cors from 'cors';
 import stations from './data/stations.js';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 const port = 3000;
 
 const app = express();
 
-//Middleware to pass preflight check
-
 app.use(cors());
-
-app.options('*', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-    res.header('Access-Control-Allow-Heaaders', 'Authorization, Content-Length, X-Requested-With'),
-    res.send(200);
-});
-
-app.use(express.urlencoded({ extended: false}));
-
 app.use(bodyParser.json());
+app.set('view engine', 'pug');
+
+//Homepage using Pug
+app.get('/', (req, res) => {
+    res.render('index', {title: "Rock Stations Across the USA", message: "Temp message for testing-hopefully this works"});
+});
 
 //GET example
 app.get('/stations', (req, res) => {
