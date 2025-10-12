@@ -10,10 +10,12 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.set('view engine', 'pug');
+app.use(express.static('public'));
+
 
 //Homepage using Pug
 app.get('/', (req, res) => {
-    res.render('index', {title: "Rock Stations Across the USA", message: "Temp message for testing-hopefully this works"});
+    res.render('index', {title: "Rock Stations Across the USA", message: "Rock Stations Across the USA"});
 });
 
 //GET example
@@ -39,6 +41,9 @@ app.delete('/stations/:updates', (req, res) => {
     res.json(stations);
 });
 
+app.use((err, req, res, next) => {
+    res.status(500).send('OOPs!');
+});
 
 app.listen(port, () => {
     console.log(`Server listening on port: ${port}.`);
