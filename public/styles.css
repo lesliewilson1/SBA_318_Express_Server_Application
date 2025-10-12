@@ -1,8 +1,19 @@
+body {
+    background-color: rgb(153, 201, 233);
+}
 h1 {
     color: blue;
-    font: bold 81px 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, blue;
+    font: bold 81px 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
 p {
-    color: red;
+    color: rgb(112, 35, 201);
+    font: bold 30px 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+form {
+    color:rgb(83, 80, 219);
+    font: bold 20px 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }

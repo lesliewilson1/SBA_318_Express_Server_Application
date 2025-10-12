@@ -4,4 +4,13 @@ html
         link(rel='stylesheet', href='/styles.css')
     body
         h1= message
-        p= "This is a paragraph"
+        p= "Station link broken? Please update it using the form below."
+
+        form(action="/", method= "POST")
+            label(for="name") Station Link : 
+            input(type="text", name="name", required)
+
+            label(for="state") State:
+            input(type="text", name="state", required)
+
+            button(type="submit") Add Station

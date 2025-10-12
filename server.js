@@ -11,12 +11,19 @@ app.use(cors());
 app.use(bodyParser.json());
 app.set('view engine', 'pug');
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true}));
 
 
 //Homepage using Pug
 app.get('/', (req, res) => {
     res.render('index', {title: "Rock Stations Across the USA", message: "Rock Stations Across the USA"});
 });
+
+app.post('/', (req, res) => {
+    const {name, state} = req.body;
+    stations.push({ name, state});
+    res.redirect('/');
+})
 
 //Filter example
 app.get('/:state', (req, res) => {
@@ -39,6 +46,7 @@ app.post('/stations', (req, res) => {
     res.json(stations);
 });
 
+
 //PATCH example
 app.patch('/stations/:updates', (req, res) => {
     stations[req.params.updates] = req.body;
@@ -50,6 +58,7 @@ app.delete('/stations/:updates', (req, res) => {
     data.splice(req.params.updates, 1);
     res.json(stations);
 });
+
 
 //----------------------------------------Routes End-----------------------------------------//
 
