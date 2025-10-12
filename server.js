@@ -18,10 +18,20 @@ app.get('/', (req, res) => {
     res.render('index', {title: "Rock Stations Across the USA", message: "Rock Stations Across the USA"});
 });
 
+//Filter example
+app.get('/:state', (req, res) => {
+    const state = req.params.state.toLowerCase();
+
+    const filtered = stations.filter(station => station.stateName.toLowerCase() === state);
+
+    res.json(filtered);
+});
+
 //GET example
 app.get('/stations', (req, res) => {
     res.json(stations);
 });
+
 
 //POST example
 app.post('/stations', (req, res) => {
@@ -41,6 +51,9 @@ app.delete('/stations/:updates', (req, res) => {
     res.json(stations);
 });
 
+//----------------------------------------Routes End-----------------------------------------//
+
+//Error handling
 app.use((err, req, res, next) => {
     res.status(500).send('OOPs!');
 });
